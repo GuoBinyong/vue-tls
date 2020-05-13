@@ -805,7 +805,7 @@ export function reinitVueInst(vueInst,incActivated) {
     : parentVal
 }
  */
-export function includeAllWihtArray_MergeStrategies(parentVal, childVal, vm) {
+export function includeAllWihtArray_MergeStrategy(parentVal, childVal, vm) {
 
   return childVal
       ? parentVal

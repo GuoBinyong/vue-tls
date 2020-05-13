@@ -1,6 +1,6 @@
 {
   "name": "vue-tls",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "vue-tls 提供了与vue相关的实用工具，比如：操作 虚拟 Dom 和 VNode 的工具，合并策略等",
   "main": "dist/vue-tls.cjs.js",
   "module": "dist/vue-tls.esm.js",
