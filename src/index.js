@@ -315,7 +315,7 @@ export function cloneVNodeUseCreate (vnode,createElement,options = {}) {
  * @param options.resetDate ? : boolean    可选；默认值：false ； 是否要重置 data ，当值为 false 时，会将 options.data 与 原 vnode 的数据混合，原 vnode 中重复的 data 属性会被覆盖；当值为 true 时，如果 options.data 被设置，则会使用 options.data ，如果 options.data 没有被设置，则会使用 原 vnode 中的 data
  * @param options.children ? : Array<VNode>     可选；子节点 (VNodes)数组
  * @param options.deepClone ? : boolean    可选； 是否进行深度克隆
- * @return VNode    返回克隆的节点
+ * @return Array<VNode>    返回克隆的节点
  */
 export function cloneVNodesUseCreate (vnodes,createElement,options) {
 
@@ -365,7 +365,7 @@ export function configSameVnodeContext(targetVN,sourceVN){
 /**
  * 通过复制的方法克隆节点
  * @param vnode : VNode   被克隆的节点
- * @param options : Object    选项对象
+ * @param options ?: Object    选项对象
  * @opetions.equivalentVNode : VNode    提供等效上下文的节点
  * @opetions.deepClone : boolean    是否要进行深度克隆
  *
@@ -772,3 +772,54 @@ export function reinitVueInst(vueInst,incActivated) {
 
 
 //vue实例操作：结束
+
+
+
+
+
+//合并策略：开始
+
+
+/**
+ * 合并的结果会按顺序包含 parent 和 child ;
+ * @param parent
+ * @param child
+ * @param vm
+ * @returns [parent,child]
+
+ 注意：
+ Vue 的 合并策略 mergeHook 有个bug，原码如下：
+
+
+ // Hooks and props are merged as arrays.
+ function mergeHook (
+ parentVal,
+ childVal
+ ) {
+  return childVal
+    ? parentVal
+      ? parentVal.concat(childVal)  //这里应该先判断 parentVal 是否是数组
+      : Array.isArray(childVal)
+        ? childVal
+        : [childVal]
+    : parentVal
+}
+ */
+export function includeAllWihtArray_MergeStrategies(parentVal, childVal, vm) {
+
+  return childVal
+      ? parentVal
+          ? Array.isArray(parentVal)
+              ? parentVal.concat(childVal)
+              : [parentVal].concat(childVal)
+          : Array.isArray(childVal)
+              ? childVal
+              : [childVal]
+      : parentVal
+}
+
+//合并策略：结束
+
+
+
+
