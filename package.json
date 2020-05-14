@@ -40,5 +40,8 @@
   },
   "peerDependencies": {
     "vue": ">=2.0.0"
+  },
+  "dependencies": {
+    "vnode-tls": "^1.0.0"
   }
 }
