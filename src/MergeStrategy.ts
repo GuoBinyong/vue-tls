@@ -1,6 +1,3 @@
-//合并策略：开始
-
-
 /**
  * 合并的结果会按顺序包含 parent 和 child ;
  * @param parent
@@ -26,6 +23,16 @@
     : parentVal
 }
  */
-export function includeAllWihtArray_MergeStrategy(parentVal: any, childVal: any, vm: any):any[];
+export function includeAllWihtArray_MergeStrategy(parentVal:any, childVal:any, vm:any):any[] {
 
-//合并策略：结束
+  return childVal
+      ? parentVal
+          ? Array.isArray(parentVal)
+              ? parentVal.concat(childVal)
+              : [parentVal].concat(childVal)
+          : Array.isArray(childVal)
+              ? childVal
+              : [childVal]
+      : parentVal
+}
+

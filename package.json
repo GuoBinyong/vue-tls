@@ -51,6 +51,7 @@
   },
   "dependencies": {
     "listen-vue-switch": "^1.0.1",
-    "vnode-tls": "^1.0.0"
+    "vnode-tls": "^1.0.0",
+    "vue-nav-stack": "^1.0.0"
   }
 }
