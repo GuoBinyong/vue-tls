@@ -1,8 +1,8 @@
 /**
  * 合并的结果会按顺序包含 parent 和 child ;
- * @param parent
- * @param child
- * @param vm
+ * @param parent:any
+ * @param child:any
+ * @param vm:any
  * @returns [parent,child]
 
  注意：
